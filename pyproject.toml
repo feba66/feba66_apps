@@ -1,0 +1,43 @@
+[tool.poetry]
+name = "feba66-apps"
+version = "0.1.0"
+description = ""
+authors = ["Felix Baumkötter <contact@feba66.de>", "Jonathan Sigrist"]
+readme = "README.md"
+license = "AGPL-3.0-only"
+packages = [
+    { include = "feba66_apps/hello", from = "components" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+flask = "^3.0.1"
+sqlalchemy = "^2.0.25"
+psycopg2-binary = "^2.9.9"
+pyargon2 = "^1.0.7"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.4"
+black = "^23.12.1"
+isort = "^5.13.2"
+flake8 = "^7.0.0"
+flake8-pyproject = "^1.2.3"
+flake8-bugbear = "^24.1.17"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 160
+target-version = ["py312"]
+
+[tool.isort]
+profile = "black"
+line-length = 160
+src_paths = ["bases", "components", "development", "test"]
+extend_skip = [".md", ".json"]
+ignore_comments = true
+
+[tool.flake8]
+max-line-length = 160
